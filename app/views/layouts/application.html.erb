@@ -23,6 +23,17 @@
   </head>
 
   <body>
+    <nav>
+      <a href="/" data-turbo-frame="content">Home</a>
+      <a href="/about" data-turbo-frame="content">About</a>
+      <a href="/contact" data-turbo-frame="content">Contact</a>
+    </nav>
+  <turbo-frame id="content">
     <%= yield %>
+  </turbo-frame>
+  
+  <footer>
+    <p>© <%= Time.now.year %> My Brutalist Website</p>
+  </footer>
   </body>
 </html>
