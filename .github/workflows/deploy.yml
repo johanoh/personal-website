@@ -13,9 +13,16 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
+      - name: Set up SSH Agent
+        run: |
+          echo "🚀 Setting up SSH agent"
+          eval "$(ssh-agent -s)"
+          ssh-add ~/.ssh/id_ed25519
+          ssh-keyscan -H github.com >> ~/.ssh/known_hosts
+
       - name: Run Deployment Script
         run: |
           echo "🚀 Running deployment script"
-          echo ${{ secrets.SUDO_PASSWORD }} | sudo -S chmod +x /home/staging/deploy.sh
-          echo ${{ secrets.SUDO_PASSWORD }} | sudo -S /home/staging/deploy.sh
+          chmod +x /home/staging/deploy.sh
+          /home/staging/deploy.sh
           echo "🚀 Deployment complete!"
