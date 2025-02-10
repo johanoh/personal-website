@@ -47,11 +47,26 @@ pre {
 }
 
 footer {
-    margin-top: 2rem;
-    padding-top: 1rem;
-    border-top: 2px solid black;
-}
-
+    text-align: center;
+    margin-top: 20px;
+    padding: 10px 0;
+  }
+  
+  footer a {
+    text-decoration: none;
+    color: inherit;
+    margin: 0 8px;
+  }
+  
+  footer img {
+    vertical-align: middle;
+    transition: opacity 0.2s;
+  }
+  
+  footer a:hover img {
+    opacity: 0.7;
+  }
+  
 
 /* Navigation */
 
