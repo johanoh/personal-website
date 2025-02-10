@@ -3,11 +3,11 @@ name: Deploy Rails App
 on:
   push:
     branches:
-      - main  # Deploy when the main branch is updated
+      - main
 
 jobs:
   deploy:
-    runs-on: self-hosted  # Use the self-hosted runner instead of GitHub-hosted
+    runs-on: self-hosted  # Use the self-hosted runner
 
     steps:
       - name: Checkout repository
@@ -15,7 +15,7 @@ jobs:
 
       - name: Run Deployment Script
         run: |
-          echo "🚀 Running deployment script from /home/staging/"
-          sudo chmod +x /home/staging/deploy.sh
-          sudo /home/staging/deploy.sh
+          echo "🚀 Running deployment script"
+          echo ${{ secrets.SUDO_PASSWORD }} | sudo -S chmod +x /home/staging/deploy.sh
+          echo ${{ secrets.SUDO_PASSWORD }} | sudo -S /home/staging/deploy.sh
           echo "🚀 Deployment complete!"
