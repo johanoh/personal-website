@@ -256,3 +256,39 @@ textarea {
   visibility: visible;
   opacity: 1;
 }
+.accordion {
+    background-color: #eee;
+    cursor: pointer;
+    padding: 10px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    font-size: 18px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: 0.4s;
+  }
+  
+  .accordion:hover {
+    background-color: #ddd;
+  }
+  
+  .icon {
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .accordion.active .icon {
+    transform: rotate(180deg); /* Flip the arrow when open */
+  }
+  
+  .panel {
+    display: none;
+    padding: 10px;
+    background-color: white;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+  

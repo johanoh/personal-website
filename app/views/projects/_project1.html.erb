@@ -1,0 +1,44 @@
+<div class="project-content">
+  <h3>Introduction</h3>
+  <p>
+    This was a passion project during the Covid-19 pandemic.  
+    Stuck at home and with very little to do I discroved the world of homelabs. 
+    My introduction to it was the operating system Unraid. In November 2020 I bought my first set of hard drives I believe 3 4 TB drives, one to act as a parity drive, and the other two as regular drives, threw them into an old computer case, with running on an old AMD Ryzen 5 1600x CPU and 16 GB of RAM.
+    Over the years I have added and tinkered with it, and now the Unraid server has a total of 114 TB of storage, and runs many docker containers and the VM that powers this website.
+    Beside (or ontop, as the systems have been transfered to a server rack) is a Proxmox server with an Epyc CPU and 256 GB of RAM, and an Nvidia 3090 for running LLM's at home, 2 rasberry pis, one running <a href="https://pi-hole.net/" target="_blank">Pihole</a>, a DNS sink, DCHP server, and DNS server, and the other running Traefik as an entrypint into the network and providing SSL certificates. 
+    An older Intel Mac Mini that I use for experimemting with accessing iMessage with my Android phone, a 1U game server system that runs Ubuntu, but I will likely move it over to proxmox.
+
+    why did I do this?  To teach myself networking, working with metal, and de-Googling my life (including moving to a security concious Android fork called <a href="https://grapheneos.org/" target="_blank">GrapheneOS</a> )
+
+
+    </p>
+
+    <h3>Services</h3>
+
+    <h4>Unraid Server</h4>
+    <p>
+      This is the core of the homelab.  It acts as the main storage server as well as run many of the docker container services, such as CouchDB for syncing my Obsidian instances across devices.  It has a total sotrage of 114 TB.  It has the following hardware:
+    </p>
+     <ul>
+      <li>Intel® Core™ i9-7960X CPU @ 2.80GHz (16 cores/32 threads)</li>
+      <li>64 GB DDR4 RAM</li>
+      <li>Nvidia P400 GPU (used for transcoding media files since the i9 does not have quicksync)</li>
+      <li>Generic Mellonox 10GB Fiber Network Interface</li>
+      <li>4x1TB SSD's in ZFS Raid 1 pool</li>
+      <li>2X2TB NVME in RAID 0 (don't judge, sometimes I need fast storage)</li>
+      <li>16 HDD of various capacities, the largest being 14TB, with two of them acting as parity drives</li>
+    </ul>
+
+    <h4>Proxmox Server</h4>
+
+    <p>
+      This is my main VM server.  It has an AMD Eypc CPU and a crap ton of ram, as well as SSD storage.  I use it for running VM's, such as Postgres databases, various flavours of linux.  It is mostly a testbed that I use for testing "cloud" compute at home.
+    </p>
+
+    <h4>Rasberry Pi 1 (Pihole)</h4>
+    <p>
+      Like anyone who uses the internet extensively I have a strong aversion to advertisements and being tracked.  The Pihole provides a DNS level ad and tracker blocking service.  It is a godsend, and makes the internet usable.
+
+
+    </p>
+</div>
