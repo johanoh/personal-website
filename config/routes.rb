@@ -30,5 +30,5 @@ Rails.application.routes.draw do
   end
 
   # Catch-all for external access
-  match "/admin_panel(/*path)", to: ->(env) { ActionController::RoutingError.new("Not Found") }, via: :all
+  match "/admin_panel(/*path)", to: ->(env) { [ 404, {}, [] ] }, via: :all
 end
