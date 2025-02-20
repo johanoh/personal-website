@@ -6,6 +6,7 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="google-site-verification" content="FUW-DCVd4eQlfx-CfGh72kQG1fDoLl5HFrHrOHNww9c" />
+    <meta name="turbo-visit-control" content="reload">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -31,6 +32,11 @@
       <a href="/" data-turbo-frame="content">Home</a>
       <a href="/about" data-turbo-frame="content">About</a>
       <a href="/contact" data-turbo-frame="content">Contact</a>
+  
+      <% if admin_signed_in? %>
+        <a href="<%= admin_panel_root_path %>" data-turbo-frame="content">Admin Panel</a>
+        <%= button_to "Logout", destroy_admin_session_path, method: :delete, data: { turbo: false }, class: "logout-btn" %>
+      <% end %>
     </nav>
   <turbo-frame id="content">
     <%= yield %>
