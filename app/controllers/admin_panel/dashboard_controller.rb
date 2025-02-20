@@ -4,7 +4,7 @@ module AdminPanel
     before_action :restrict_to_lan
 
     def index
-      render plain: "Welcome to the Admin Panel!"
+      render "admin_panel/dashboard/index"
     end
 
     private
@@ -12,7 +12,7 @@ module AdminPanel
     def restrict_to_lan
       allowed_ips = Rails.configuration.admin_allowed_ips
       unless allowed_ips.any? { |ip| request.remote_ip.start_with?(ip) }
-        render plain: "Not Found", status: :not_found
+        render file: Rails.public_path.join("404.html"), status: :not_found, layout: false
       end
     end
   end
