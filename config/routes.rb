@@ -18,4 +18,17 @@ Rails.application.routes.draw do
   if Rails.env.development?
     mount LetterOpenerWeb::Engine, at: "/letter_opener"
   end
+
+  constraints lambda { |req|
+    Rails.configuration.admin_allowed_ips.any? { |ip| req.remote_ip.start_with?(ip) }
+  } do
+    devise_for :admins, controllers: { sessions: "admins/sessions" }, path: "admin_auth"
+
+    namespace :admin_panel do
+      root to: "dashboard#index"
+    end
+  end
+
+  # Catch-all for external access
+  match "/admin_panel(/*path)", to: ->(env) { ActionController::RoutingError.new("Not Found") }, via: :all
 end
