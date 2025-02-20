@@ -1,0 +1,13 @@
+<%= turbo_frame_tag "content" do %>
+  <h1>Admin Panel</h1>
+
+  <p>Welcome, <%= current_admin.email %>!</p>
+
+  <h2>Quick Links</h2>
+  <ul>
+  </ul>
+
+<%= button_to "Logout", destroy_admin_session_path, method: :delete, data: { turbo: false }, class: "logout-btn" %>
+
+<% end %>
+

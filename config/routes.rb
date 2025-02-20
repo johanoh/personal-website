@@ -28,7 +28,4 @@ Rails.application.routes.draw do
       root to: "dashboard#index"
     end
   end
-
-  # Catch-all for external access
-  match "/admin_panel(/*path)", to: ->(env) { [ 404, {}, [] ] }, via: :all
 end
