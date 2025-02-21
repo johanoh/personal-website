@@ -1,0 +1,14 @@
+<!-- app/views/admin_panel/tags/new.html.erb -->
+<%= turbo_frame_tag "content" do %>
+  <h1>Create a New Tag</h1>
+
+  <%= form_with model: @tag, url: admin_panel_tags_path, local: true do |form| %>
+    <div>
+      <%= form.label :name, "Tag Name" %>
+      <%= form.text_field :name, required: true, class: "form-control" %>
+    </div>
+
+    <%= form.submit "Create Tag", class: "btn btn-primary" %>
+  <% end %>
+
+<% end %>

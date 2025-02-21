@@ -11,7 +11,8 @@
         <th>Updated at</th>
         <th>Published</th>
         <th>Hidden</th>
-        <th colspan="4"></th><!-- Make sure the column span is correct -->
+        <th>Tags</th>
+        <th colspan="4" class="text-center">Actions</th>
       </tr>
     </thead>
     <tbody>
@@ -22,10 +23,17 @@
           <td><%= post.updated_at.strftime("%Y/%m/%d") %></td>
           <td><%= post.published? %></td>
           <td><%= post.hidden? %></td>
-
-          <!-- Action Buttons Column -->
+          <td>
+            <% if post.tags.any? %>
+              <span class="tooltip-container">
+                <%= post.tags.count %> tags
+                <span class="tooltip-text"><%= post.tags.map(&:name).join(', ') %></span>
+              </span>
+            <% else %>
+              No tags
+            <% end %>
+          </td>
           <td colspan="4" class="text-center">
-            <!-- Add a div to hold the buttons and style them inline -->
             <div class="btn-group" role="group">
               <%= link_to "Edit", edit_admin_panel_blog_post_path(post) %> |
               <%= button_to "Delete", admin_panel_blog_post_path(post), method: :delete, data: { confirm: "Are you sure?" } %> |

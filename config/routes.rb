@@ -36,6 +36,7 @@ Rails.application.routes.draw do
           patch :toggle_hidden
         end
       end
+      resources :tags, only: [ :new, :create ]
     end
   end
 end
