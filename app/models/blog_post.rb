@@ -1,6 +1,7 @@
 class BlogPost < ApplicationRecord
   before_validation :generate_slug, if: :title_changed?
   before_save :set_published_at, if: :published?
+  after_create :refresh_sitemap
 
   before_update :prevent_slug_change_if_published
 
@@ -16,6 +17,12 @@ class BlogPost < ApplicationRecord
 
   def to_param
     slug
+  end
+
+  def refresh_sitemap
+    Rails.application.executor.wrap do
+      system("rails sitemap:refresh")
+    end
   end
 
   private
