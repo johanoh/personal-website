@@ -1,0 +1,5 @@
+<%= turbo_frame_tag "content" do %>
+  <h1>Edit Blog Post</h1>
+  <%= render "form" %> <!-- Render the form partial for editing -->
+  <%= link_to "Back to Blog Posts", admin_panel_blog_posts_path, data: { turbo: false } %>
+<% end %>

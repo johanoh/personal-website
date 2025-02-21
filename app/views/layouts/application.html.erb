@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <title><%= content_for(:title) || "Personal Website" %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -7,6 +7,9 @@
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="google-site-verification" content="FUW-DCVd4eQlfx-CfGh72kQG1fDoLl5HFrHrOHNww9c" />
     <meta name="turbo-visit-control" content="reload">
+    <%= stylesheet_link_tag "https://esm.sh/easymde/dist/easymde.min.css", rel: "stylesheet" %>
+    
+
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -21,9 +24,11 @@
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="192x192" href="/android-chrome-192x192.png">
   <link rel="icon" type="image/png" sizes="512x512" href="/android-chrome-512x512.png">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css">
 
     <%# Includes all stylesheet files in app/assets/stylesheets %>
     <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "https://esm.sh/easymde/dist/easymde.min.css", rel: "stylesheet" %>
     <%= javascript_importmap_tags %>
   </head>
 
@@ -32,6 +37,7 @@
       <a href="/" data-turbo-frame="content">Home</a>
       <a href="/about" data-turbo-frame="content">About</a>
       <a href="/contact" data-turbo-frame="content">Contact</a>
+      <a href="/blog" data-turbo-frame="content">Blog</a>
   
       <% if admin_signed_in? && request.remote_ip.in?(Rails.configuration.admin_allowed_ips) %>
         <a href="<%= admin_panel_root_path %>" data-turbo-frame="main_content">Admin Panel</a>

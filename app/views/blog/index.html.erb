@@ -1,0 +1,25 @@
+<%= turbo_frame_tag "content" do %>
+  <meta name="description" content="This is the main blog listing page for Johan Oh's personal website.  It contains a list of blog posts">
+  <h1>Blog</h1>
+
+  <% @blog_posts.each do |post| %>
+    <article>
+      <h2>
+        <%= link_to post.title, blog_path(post.slug), class: "blog-title" %>
+      </h2>
+      <p>Published At <%= post.published_at.strftime("%B %d, %Y") %></p>
+      
+      <% if post.tags.any? %>
+        <p>Tags: 
+          <% post.tags.each do |tag| %>
+            <%= tag.name %>
+          <% end %>
+        </p>
+      <% end %>
+
+      <p><%= truncate(strip_tags(markdown(post.content)), length: 200) %></p>
+    </article>
+  <% end %>
+
+
+<% end %>

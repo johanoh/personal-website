@@ -1,0 +1,4 @@
+<!-- app/views/admin_panel/blog_posts/create.html.erb -->
+<%= turbo_stream.append "blog_posts" do %>
+  <%= render @blog_post %>
+<% end %>

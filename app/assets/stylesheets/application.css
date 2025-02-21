@@ -143,6 +143,19 @@ textarea {
     color: black;
 }
 
+/* Apply Flexbox to the button group to align them horizontally */
+.btn-group {
+  display: flex;
+  justify-content: center; /* Centers the buttons horizontally */
+  gap: 10px; /* Adds space between the buttons */
+  flex-wrap: wrap; /* Ensures buttons wrap to the next line if needed */
+}
+
+/* Optional: Additional styling for button margin */
+.btn-group .btn {
+  margin: 5px; /* Adds spacing around each button */
+}
+
 
 /* Center the contact form */
 .contact-container {
@@ -150,3 +163,65 @@ textarea {
     justify-content: center;
     align-items: center; /* Ensures it takes up most of the viewport */
 }
+
+
+/* Ensure the EasyMDE editor is properly displayed */
+.EasyMDEContainer {
+    width: 100%;
+    max-width: 800px;
+    min-height: 300px;
+  }
+  
+  textarea[data-markdown-editor-target="textarea"] {
+    width: 100%;
+    min-height: 300px;
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+  
+  .CodeMirror {
+    min-height: 300px;
+    max-height: 600px;
+    font-size: 16px;
+  }
+
+/* Blog Post Titles */
+.blog-title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #222;
+    text-decoration: none;
+    display: block;
+    margin-bottom: 10px;
+  }
+
+  .blog-title-page {
+    font-size: 24px;
+    font-weight: bold;
+    color: #222;
+    text-decoration: none;
+    display: block;
+    margin-bottom: 10px;
+  }
+  
+  /* Hover Effect */
+  .blog-title:hover {
+    color: #336699; /* Soft blue */
+    text-decoration: underline;
+  }
+  
+  .tag-link {
+    background-color: #f4f4f4;
+    color: #336699;
+    padding: 5px 10px;
+    margin-right: 5px;
+    font-size: 14px;
+    border-radius: 5px;
+    text-decoration: none;
+  }
+  
+  .tag-link:hover {
+    background-color: #e0e0e0;
+    color: #0056b3;
+  }
+  

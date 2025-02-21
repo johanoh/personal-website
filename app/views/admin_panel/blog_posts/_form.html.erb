@@ -1,0 +1,29 @@
+<%= form_with(model: @blog_post, url: @blog_post.new_record? ? admin_panel_blog_posts_path : admin_panel_blog_post_path(@blog_post.slug), method: @blog_post.new_record? ? :post : :patch, local: true) do |form| %>
+
+<% if @blog_post.errors.any? %>
+<div class="error_messages">
+    <ul>
+        <% @blog_post.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+        <% end %>
+    </ul>
+</div>
+<% end %>
+
+<div>
+    <%= form.label :title %>
+    <%= form.text_field :title, required: true %>
+</div>
+
+<div data-controller="markdown-editor">
+    <%= form.label :content %>
+    <%= form.text_area :content, data: { markdown_editor_target: "textarea" }%>
+</div>
+
+<div>
+    <%= form.label :tags %>
+    <%= form.collection_select :tag_ids, Tag.all, :id, :name, { include_blank: false }, multiple: true, class: "tag-select" %>
+</div>
+
+<%= form.submit @blog_post.new_record? ? "Create Blog Post" : "Update Blog Post" %>
+<% end %>

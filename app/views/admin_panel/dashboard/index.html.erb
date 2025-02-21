@@ -3,11 +3,11 @@
 
   <p>Welcome, <%= current_admin.email %>!</p>
 
-  <h2>Quick Links</h2>
+  <h2>Manage Blog Posts</h2>
   <ul>
+    <li><%= link_to "View All Blog Posts", admin_panel_blog_posts_path %></li>
+    <li><%= link_to "Create New Blog Post", new_admin_panel_blog_post_path %></li>
   </ul>
 
-<%= button_to "Logout", destroy_admin_session_path, method: :delete, data: { turbo: false }, class: "logout-btn" %>
-
+  <%= button_to "Logout", destroy_admin_session_path, method: :delete, data: { turbo: false }, class: "logout-btn" %>
 <% end %>
-
