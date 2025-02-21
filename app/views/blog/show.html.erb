@@ -1,0 +1,19 @@
+<%= turbo_frame_tag "content" do %>
+    <h1 class="blog-title-page"><%= @blog_post.title %></h1>
+    <p><%= @blog_post.published_at.strftime("%B %d, %Y") %></p>
+
+    <% if @blog_post.tags.any? %>
+    <p>Tags: 
+        <% @blog_post.tags.each do |tag| %>
+        <%= link_to tag.name, blog_path(tag: tag.name), class: "tag-link" %>
+        <% end %>
+    </p>
+    <% end %>
+
+    <div>
+    <%= markdown(@blog_post.content) %>
+    </div>
+
+    <%= link_to "Back to Blog", blog_index_path %>
+
+<% end %>

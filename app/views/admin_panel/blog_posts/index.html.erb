@@ -1,0 +1,40 @@
+<%= turbo_frame_tag "content" do %>
+  <h1>Manage Blog Posts</h1>
+
+  <%= link_to "New Blog Post", new_admin_panel_blog_post_path %>
+
+  <table class="table table-bordered mt-3">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Created at</th>
+        <th>Updated at</th>
+        <th>Published</th>
+        <th>Hidden</th>
+        <th colspan="4"></th><!-- Make sure the column span is correct -->
+      </tr>
+    </thead>
+    <tbody>
+      <% @blog_posts.each do |post| %>
+        <tr>
+          <td><%= post.title %></td>
+          <td><%= post.created_at.strftime("%Y/%m/%d") %></td>
+          <td><%= post.updated_at.strftime("%Y/%m/%d") %></td>
+          <td><%= post.published? %></td>
+          <td><%= post.hidden? %></td>
+
+          <!-- Action Buttons Column -->
+          <td colspan="4" class="text-center">
+            <!-- Add a div to hold the buttons and style them inline -->
+            <div class="btn-group" role="group">
+              <%= link_to "Edit", edit_admin_panel_blog_post_path(post) %> |
+              <%= button_to "Delete", admin_panel_blog_post_path(post), method: :delete, data: { confirm: "Are you sure?" } %> |
+              <%= button_to "Publish", toggle_publish_admin_panel_blog_post_path(post), method: :patch, disabled: post.published? %> |
+              <%= button_to post.hidden? ? "Unhide" : "Hide", toggle_hidden_admin_panel_blog_post_path(post), method: :patch %>
+            </div>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>

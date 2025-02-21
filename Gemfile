@@ -72,3 +72,4 @@ end
 
 gem "rack-attack", "~> 6.7"
 gem "devise"
+gem "redcarpet"
