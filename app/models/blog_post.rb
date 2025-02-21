@@ -3,7 +3,7 @@ class BlogPost < ApplicationRecord
   before_save :set_published_at, if: :published?
   after_create :refresh_sitemap
   after_update :refresh_sitemap
-  after_destroy :refresh_sitemap
+  after_commit :refresh_sitemap, on: :destroy
 
   before_update :prevent_slug_change_if_published
 
@@ -21,13 +21,13 @@ class BlogPost < ApplicationRecord
     slug
   end
 
+  private
+
   def refresh_sitemap
     Rails.application.executor.wrap do
       system("rails sitemap:refresh")
     end
   end
-
-  private
 
   def generate_slug
     self.slug = title.parameterize if slug.blank?
