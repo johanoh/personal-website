@@ -1,7 +1,9 @@
 class BlogPost < ApplicationRecord
   before_validation :generate_slug, if: :title_changed?
   before_save :set_published_at, if: :published?
-  before_save :refresh_sitemap
+  after_create :refresh_sitemap
+  after_update :refresh_sitemap
+  after_destroy :refresh_sitemap
 
   before_update :prevent_slug_change_if_published
 
