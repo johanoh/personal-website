@@ -220,8 +220,39 @@ textarea {
     text-decoration: none;
   }
   
-  .tag-link:hover {
+  /* .tag-link:hover {
     background-color: #e0e0e0;
     color: #0056b3;
-  }
+  } */
   
+
+  /* Basic styling for the tooltip container */
+.tooltip-container {
+  position: relative;
+  display: inline-block;
+  cursor: pointer; /* Makes it look clickable */
+}
+
+/* The actual tooltip text (hidden by default) */
+.tooltip-text {
+  visibility: hidden;
+  width: 200px;
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  border-radius: 5px;
+  padding: 5px;
+  position: absolute;
+  z-index: 1;
+  bottom: 100%; /* Position above the element */
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  transition: opacity 0.3s; /* Smooth transition */
+}
+
+/* Tooltip visible when hovering over the container */
+.tooltip-container:hover .tooltip-text {
+  visibility: visible;
+  opacity: 1;
+}

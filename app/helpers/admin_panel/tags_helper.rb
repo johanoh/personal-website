@@ -1,0 +1,2 @@
+module AdminPanel::TagsHelper
+end

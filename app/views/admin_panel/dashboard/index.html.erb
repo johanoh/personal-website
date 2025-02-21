@@ -7,6 +7,8 @@
   <ul>
     <li><%= link_to "View All Blog Posts", admin_panel_blog_posts_path %></li>
     <li><%= link_to "Create New Blog Post", new_admin_panel_blog_post_path %></li>
+    <li><%= link_to "Create Tag", new_admin_panel_tag_path%></li>
+
   </ul>
 
   <%= button_to "Logout", destroy_admin_session_path, method: :delete, data: { turbo: false }, class: "logout-btn" %>
