@@ -1,0 +1,13 @@
+<turbo-frame id="content">
+<h1>Projects</h1>
+
+<div class="projects" data-controller="projects">
+  <% @projects.each do |project| %>
+    <button class="accordion" data-action="click->projects#toggle" data-project-id="<%= project.id %>">
+      <%= project.name %>
+      <span class="icon" data-projects-target="icon">▼</span>
+    </button>
+    <div id="project-<%= project.id %>" class="panel projects-content"></div>
+  <% end %>
+</div>
+</turbo-frame>

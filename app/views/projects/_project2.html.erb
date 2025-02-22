@@ -1,0 +1,81 @@
+<turbo-frame id="content">
+    <meta name="description" content="Johan Oh's personal website project page. Learn about the motivation behind the project and the technologies used to build it.  Built with Ruby on Rails and Hotwire">
+
+    <h1>Personal Website Project</h1>
+
+    <p>
+        This page dives into the motivation behind my personal website, the technologies I used to build it, and some of the lessons I learned along the way. It’s a mix of a learning exercise and a passion project.
+    </p>
+    <section class="project-section">
+        <h2>Motivation</h2>
+        <p>
+            I started this project between jobs in January 2025. The motivation behind creating this personal website was to build a space that I fully control,
+            where I can showcase my work, interests, and the technology that powers my projects. This project is mostly a learning exercise in
+            building and deploying a website from start to finish — from website design to infrastructure.
+        </p>
+        <p>
+            I chose <strong><a href="https://rubyonrails.org/" target="_blank">Ruby on Rails</a></strong> for the backend based on my experience maintaining a large Rails platform at my previous job.
+            Before Rails, I came from the Django world, but the two frameworks were similar enough that picking up Rails was relatively easy. That being said, I joined the project when
+            it had already matured into a gnarly enterprise app (as they often do), which left me with a slightly sour taste for Rails. My manager, a Rails veteran, insisted that my frustrations stemmed from the project’s unorthodox structure
+            not Rails itself. So, I decided to start fresh with a new Ruby on Rails project,
+            hoping to redeem my admittedly poor introduction to the framework.
+        </p>
+        <p>
+            I was also motivated to use <strong><a href="https://turbo.hotwired.dev/" target="_blank">Turbo (Hotwire + Stimulus)</a></strong> due to my interest in <strong><a href="https://htmx.org/" , target="_blank">HTMX</a></strong>, which shares a similar approach to Turbo's philosophy.
+            Like HTMX, Turbo extends HTML to reduce the need for JavaScript and allows websites to be more interactive with minimal client-side code.
+            Turbo integrates seamlessly with Rails, while HTMX is framework-agnostic.
+            While both technologies enable the creation of dynamic, real-time user interfaces, they achieve this with different mechanisms: Turbo handles page updates via Turbo Streams,
+            while Stimulus focuses on managing simple client-side interactions like toggling accordions.
+            By using Turbo, the website behaves like a single-page application (SPA), but instead of relying on a heavy JavaScript framework, it uses lightweight Turbo Streams to update parts of the DOM without a full page refresh.
+        </p>
+
+        <p>
+            I personally have reservations about using React for everything on the frontend (or, heaven forbid, the backend).
+            React is powerful and absolutely has its place, but it can be overkill for simple CRUD-based applications that don’t require the level of interactivity that React is built to handle.
+            For platforms like this one, where the main focus is displaying and managing content, HTMX and Turbo Hotwire offer a lighter, more streamlined solution.
+            Even for larger enterprise applications, such as banking software, where state management is critical, there’s still value in considering alternatives to React.
+            Sometimes, a simpler solution is the right one.
+            As they say in the world of web development, <a href="https://www.erikheemskerk.nl/htmx-simplicity/" target="_blank">"Simplicity in the Age of Complicated Solutions"</a>.
+        </p>
+        <%
+=begin%>
+        Todo add reference to homelab post when completed
+        <%
+=end%>
+        <p>
+            One of my main hobbies is building and maintaining my homelab. I wanted to host this website on my own infrastructure,
+            including automated deployment and backup systems. It has been a very informative experience in understanding how
+            GitHub Actions and runners work, as well as a deeper dive into the cron side of things.
+        </p>
+    </section>
+
+    <section class="project-section">
+        <h2>Technologies Used</h2>
+        <p>
+            Here’s a quick rundown of the tools and frameworks that power the site:
+        </p>
+
+        <ul>
+            <li><strong>Ruby on Rails</strong>: The foundation of the website. Rails is great for quickly building full-stack web apps and powers the server-side logic, models, and views.</li>
+            <li><strong>Hotwire (Turbo + Stimulus)</strong>: Turbo handles partial page updates and real-time interactions via Turbo Streams, while Stimulus manages client-side interactions like toggling accordions. Together, they replace most JavaScript with lightweight HTML updates.</li>
+            <li><strong>SQLite</strong>: A simple, efficient database perfect for a personal site. It's lightweight, integrates easily with Rails, and doesn’t require complex database management.</li>
+            <li><strong>Custom Minimalist CSS</strong>: The design follows a minimalist approach with a focus on readability, speed, and clean typography. There are no heavy CSS frameworks — just the essentials to keep the site fast. Inspiration taken from <a href="https://bettermotherfuckingwebsite.com/" target="_blank">here</a>.</li>
+            <li><strong>Markdown for Blog Posts</strong>: The blog posts are written in Markdown and stored in the database. They are rendered as HTML before being displayed on the site, providing a fast, flexible way to manage content.</li>
+        </ul>
+    </section>
+    <section class="project-section">
+        <h2>Wrapping Up</h2>
+        <p>
+            Building this website has been equal parts frustrating and rewarding. It’s reminded me why I love tinkering with code: there’s nothing quite like taking an idea from a rough sketch to a working product.
+            I got to dust off my Rails skills, dive deeper into Turbo’s magic, and finally set up a self-hosted deployment pipeline.
+        </p>
+        <p>
+            More than anything, this project solidified my belief that <em>simplicity matters</em>. You don’t always need React, Kubernetes, or a 10-microservice architecture for a personal blog.
+            Sometimes a Rails app with SQLite, a sprinkle of Turbo, and a DIY Markdown system is more than enough. (Plus, it’s way more fun to host it yourself.)
+        </p>
+        <p>
+            If you’re working on a similar project or just want to chat about Rails, Turbo, or homelab setups, 
+            feel free to reach out via the contact page. I’d love to hear from you!
+        </p>
+    </section>
+</turbo-frame>

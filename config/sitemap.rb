@@ -6,6 +6,7 @@ SitemapGenerator::Sitemap.create do
   add about_path, changefreq: "monthly", priority: 0.5
   add contact_path, changefreq: "monthly", priority: 0.5
   add blog_index_path, changefreq: "daily", priority: 1.0
+  add projects_index_path, changefreq: "weekly", priority: 0.5
 
   BlogPost.published.find_each do |post|
       add blog_path(slug: post.slug), lastmod: post.updated_at, changefreq: "monthly", priority: 0.7
