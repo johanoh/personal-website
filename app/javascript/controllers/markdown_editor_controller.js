@@ -8,6 +8,7 @@ export default class extends Controller {
   connect() {
     this.editor = new EasyMDE({
       element: this.textareaTarget,
+      sideBySideFullscreen: false,
       spellChecker: false,
       autosave: {
         enabled: true,
@@ -25,10 +26,11 @@ export default class extends Controller {
         "|",
         "link",
         "image",
+        "table",
         "|",
         "preview",
         "side-by-side",
-        "fullscreen",
+        // "fullscreen",
         "|",
         "guide"
       ],
