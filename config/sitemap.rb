@@ -8,6 +8,10 @@ SitemapGenerator::Sitemap.create do
   add blog_index_path, changefreq: "daily", priority: 1.0
   add projects_index_path, changefreq: "weekly", priority: 0.5
 
+  if File.exist?(Rails.root.join("public/sitemap.xml.gz")) && !(Rails.env.test? || Rails.env.development?)
+    SitemapGenerator::Sitemap.ping_search_engines
+  end
+
   BlogPost.published.find_each do |post|
       add blog_path(slug: post.slug), lastmod: post.updated_at, changefreq: "monthly", priority: 0.7
     end
