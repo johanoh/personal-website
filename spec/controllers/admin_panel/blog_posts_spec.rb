@@ -1,11 +1,11 @@
 require "rails_helper"
 
 RSpec.describe AdminPanel::BlogPostsController, type: :request do
-  let(:admin) { Admin.create!(email: "admin@example.com", password: "password") }
+  let!(:admin) { Admin.create!(email: "admin@example.com", password: "password") }
   let!(:blog_post) { BlogPost.create!(title: "Test Post", content: "Test content", slug: "test-post", published: false, hidden: true) }
 
   before do
-    sign_in admin  # Devise helper for authentication
+    sign_in admin, scope: :admin
   end
 
   describe "GET #index" do
@@ -29,9 +29,10 @@ RSpec.describe AdminPanel::BlogPostsController, type: :request do
           post admin_panel_blog_posts_path, params: { blog_post: { title: "New Post", content: "New Content", slug: "new-post" } }
         }.to change(BlogPost, :count).by(1)
 
-        expect(response).to redirect_to(admin_panel_blog_posts_path)
-        follow_redirect!
-        expect(response.body).to include("Blog post created successfully!")
+        expect(response).to redirect_to(admin_panel_blog_posts_path) # Ensure redirect
+        follow_redirect! # Follow the redirect to index
+
+        expect(flash[:notice]).to eq("Blog post created successfully!") # Assert flash message
       end
     end
 
@@ -78,4 +79,22 @@ RSpec.describe AdminPanel::BlogPostsController, type: :request do
       }.to change(BlogPost, :count).by(-1)
 
       expect(response).to redirect_to(admin_panel_blog_posts_path)
-   
+    end
+  end
+
+  describe "POST #toggle_publish" do
+    it "toggles the published status" do
+      patch toggle_publish_admin_panel_blog_post_path(blog_post.slug)
+      blog_post.reload
+      expect(blog_post.published).to be true
+    end
+  end
+
+  describe "POST #toggle_hidden" do
+    it "toggles the hidden status" do
+      patch toggle_hidden_admin_panel_blog_post_path(blog_post.slug)
+      blog_post.reload
+      expect(blog_post.hidden).to be false
+    end
+  end
+end
