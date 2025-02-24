@@ -1,9 +1,10 @@
 require "ostruct"
 
+
 class ProjectsController < ApplicationController
   PROJECTS = {
-      # "project1" => "Homelab"
-      "project2" => "Personal Website"
+    # "project1" => "Homelab",
+    "project2" => "Personal Website"
   }.freeze
 
   def index
@@ -17,6 +18,8 @@ class ProjectsController < ApplicationController
 
     if PROJECTS.key?(project_id)
       @project = project_id
+      # Renders the project detail page content into a frame
+      render "projects/show"
     else
       head :not_found
     end

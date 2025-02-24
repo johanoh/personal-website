@@ -1,0 +1,9 @@
+<turbo-frame id="content">
+    <div class="project-template">
+        <%= link_to "Back", projects_path, class: "back-button top" %>
+        <div class="project-content">
+            <%= render "projects/#{@project}" %>
+        </div>
+    </div>
+
+</turbo-frame>

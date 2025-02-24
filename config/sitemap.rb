@@ -12,6 +12,13 @@ SitemapGenerator::Sitemap.create do
     SitemapGenerator::Sitemap.ping_search_engines
   end
 
+  Dir[Rails.root.join("app/views/projects/_*.html.erb")].each do |file|
+    project_slug = File.basename(file, ".html.erb").delete_prefix("_")
+    project_path = "/projects/#{project_slug}"
+
+    add project_path, lastmod: File.mtime(file), priority: 0.7, changefreq: "monthly"
+  end
+
   BlogPost.published.find_each do |post|
       add blog_path(slug: post.slug), lastmod: post.updated_at, changefreq: "monthly", priority: 0.7
     end
