@@ -33,10 +33,12 @@ body {
   transition: background 0.3s ease, color 0.3s ease;
 }
 
-h1, h2, h3 {
+h1,
+h2,
+h3 {
   font-weight: bold;
 }
-  
+
 a {
   color: var(--link-color);
   text-decoration: underline;
@@ -124,7 +126,8 @@ label {
   text-transform: uppercase;
 }
 
-input, textarea {
+input,
+textarea {
   width: 100%;
   padding: 0.5rem;
   border: 2px solid var(--border-color);
@@ -191,7 +194,8 @@ textarea[data-markdown-editor-target="textarea"] {
   font-size: 16px;
 }
 
-.blog-title, .blog-title-page {
+.blog-title,
+.blog-title-page {
   font-size: 24px;
   font-weight: bold;
   color: var(--text-color);
@@ -295,5 +299,59 @@ footer a:hover img {
   opacity: 0.7;
 }
 
+.project-template {
+  position: relative;
+  padding: 20px;
+}
 
+.project-content {
+  max-height: 60vh;  /* Limit height for scrollable content */
+  overflow-y: auto;  /* Enables vertical scrolling */
+  padding-right: 10px;  /* Ensures space for the scrollbar */
+  margin-top: 55px;  /* Ensures a gap between the back button and the project content */
+}
 
+/* Custom scrollbar */
+.project-content::-webkit-scrollbar {
+  width: 8px;
+  /* Make the scrollbar smaller */
+}
+
+.project-content::-webkit-scrollbar-thumb {
+  background-color: var(--border-color);
+  /* Color of the scrollbar thumb */
+  border-radius: 10px;
+  /* Rounded edges for the thumb */
+}
+
+.project-content::-webkit-scrollbar-track {
+  background-color: var(--bg-color);
+  /* Color of the track */
+  border-radius: 10px;
+  /* Rounded edges for the track */
+}
+
+.back-button {
+  position: absolute;
+  top: 20px;  /* Space from the top of the container */
+  right: 20px;  /* Aligns the button to the right */
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  padding: 10px 20px;
+  border: 2px solid var(--border-color);
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1rem;
+  text-transform: uppercase;
+  display: inline-block;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  margin-bottom: 20px;  /* Space between back button and the project content */
+}
+
+.back-button:hover {
+  background-color: var(--hover-link-color);
+  color: var(--bg-color);
+  border-color: var(--hover-link-color);
+}
