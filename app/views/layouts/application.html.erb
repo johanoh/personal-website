@@ -37,9 +37,8 @@
       <a href="/" data-turbo-frame="content">Home</a>
       <a href="/about" data-turbo-frame="content">About</a>
       <a href="/projects" data-turbo-frame="content">Projects</a>
-      <a href="/contact" data-turbo-frame="content">Contact</a>
       <a href="/blog" data-turbo-frame="content">Blog</a>
-  
+      <a href="/contact" data-turbo-frame="content">Contact</a>
       <% if admin_signed_in? && request.remote_ip.in?(Rails.configuration.admin_allowed_ips) %>
         <a href="<%= admin_panel_root_path %>" data-turbo-frame="main_content">Admin Panel</a>
       <% elsif !admin_signed_in? && request.remote_ip.in?(Rails.configuration.admin_allowed_ips) %>
