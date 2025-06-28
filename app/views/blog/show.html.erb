@@ -1,6 +1,7 @@
 <%= turbo_frame_tag "content" do %>
 <div class="project-template">
     <%= link_to "Back", :back, class: "back-button top" %>
+    <%= link_to "Back to Blog", blog_index_path, class: "back-button top" %>
     <h1 class="blog-title-page"><%= @blog_post.title %></h1>
     <p><%= @blog_post.published_at.strftime("%B %d, %Y") %></p>
 

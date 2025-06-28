@@ -7,8 +7,6 @@
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="google-site-verification" content="FUW-DCVd4eQlfx-CfGh72kQG1fDoLl5HFrHrOHNww9c" />
     <meta name="turbo-visit-control" content="reload">
-    <%= stylesheet_link_tag "https://esm.sh/easymde/dist/easymde.min.css", rel: "stylesheet" %>
-    
 
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -28,7 +26,7 @@
 
     <%# Includes all stylesheet files in app/assets/stylesheets %>
     <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
-    <%= stylesheet_link_tag "https://esm.sh/easymde/dist/easymde.min.css", rel: "stylesheet" %>
+    <%= stylesheet_link_tag "https://cdn.jsdelivr.net/npm/easymde/dist/easymde.min.css" %>
     <%= javascript_importmap_tags %>
   </head>
 

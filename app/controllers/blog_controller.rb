@@ -1,11 +1,7 @@
 class BlogController < ApplicationController
   def index
-    if params[:tag]
-      tag = Tag.find_by(name: params[:tag])
-      @blog_posts = tag ? tag.blog_posts.published.visible.order(published_at: :desc) : []
-    else
-      @blog_posts = BlogPost.published.visible.order(published_at: :desc)
-    end
+    @blog_posts = BlogPost.published.visible.order(published_at: :desc)
+    @blog_posts = @blog_posts.by_tag(params[:tag]) if params[:tag]
   end
 
   def show
