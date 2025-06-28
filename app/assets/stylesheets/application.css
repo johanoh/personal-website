@@ -175,11 +175,6 @@ textarea {
   align-items: center;
 }
 
-.EasyMDEContainer {
-  width: 100%;
-  max-width: 800px;
-  min-height: 300px;
-}
 
 textarea[data-markdown-editor-target="textarea"] {
   width: 100%;
@@ -192,7 +187,57 @@ textarea[data-markdown-editor-target="textarea"] {
   min-height: 300px;
   max-height: 600px;
   font-size: 16px;
+  overflow-y: auto;
+} */
+
+/* .EasyMDEContainer {
+  width: 100%;
+  max-width: 800px;
+  min-height: 300px;
+  overflow-y: auto;
 }
+
+
+/* Fix for CodeMirror Scroll Issues */
+/* .EasyMDEContainer {
+  width: 100%;
+  max-width: 800px;
+  min-height: 300px;
+  overflow-y: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Ensure the CodeMirror editor inside EasyMDE scrolls properly */
+.EasyMDEContainer .CodeMirror {
+  min-height: 300px;
+  max-height: 600px;
+  font-size: 16px;
+  overflow-y: auto !important;
+}
+
+/* Ensure the actual scrolling area works */
+.EasyMDEContainer .CodeMirror-scroll {
+  min-height: 300px !important;
+  max-height: 500px !important;
+  overflow-y: scroll !important;
+  scrollbar-width: auto;
+  cursor: pointer;
+}
+
+.EasyMDEContainer .CodeMirror-scroll::-webkit-scrollbar {
+  width: 10px;
+}
+
+.EasyMDEContainer .CodeMirror-scroll::-webkit-scrollbar-thumb {
+  background-color: #888;
+  border-radius: 5px;
+}
+
+ MDEContainer .CodeMirror-scroll::-webkit-scrollbar-thumb:hover {
+  background-color: #555;
+} */
+
 
 .blog-title,
 .blog-title-page {

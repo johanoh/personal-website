@@ -1,9 +1,7 @@
 class BlogPost < ApplicationRecord
   before_validation :generate_slug, if: :title_changed?
   before_save :set_published_at, if: :published?
-  after_create :refresh_sitemap
-  after_update :refresh_sitemap
-  after_commit :refresh_sitemap, on: :destroy
+  after_commit :refresh_sitemap, on: [ :create, :update, :destroy ]
 
   before_update :prevent_slug_change_if_published
 
@@ -16,6 +14,7 @@ class BlogPost < ApplicationRecord
 
   scope :published, -> { where(published: true).where("published_at <= ?", Time.current) }
   scope :visible, -> { where(hidden: false) }
+  scope :by_tag, ->(tag_name) { joins(:tags).where(tags: { name: tag_name }) }
 
   def to_param
     slug
@@ -24,9 +23,7 @@ class BlogPost < ApplicationRecord
   private
 
   def refresh_sitemap
-    Rails.application.executor.wrap do
-      system("rails sitemap:refresh")
-    end
+    SitemapRefreshJob.perform_later
   end
 
   def generate_slug

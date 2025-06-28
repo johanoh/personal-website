@@ -26,7 +26,7 @@ Rails.application.routes.draw do
     mount LetterOpenerWeb::Engine, at: "/letter_opener"
   end
 
-  if Rails.env.test?
+  def admin_routes
     devise_for :admins, controllers: { sessions: "admins/sessions" }, path: "admin_auth"
     namespace :admin_panel do
       root to: "dashboard#index"
@@ -40,22 +40,15 @@ Rails.application.routes.draw do
     end
   end
 
+  if Rails.env.test?
+    admin_routes
+  end
+
   if Rails.env.development? || Rails.env.production?
     constraints lambda { |req|
       Rails.configuration.admin_allowed_ips.any? { |ip| req.remote_ip.start_with?(ip) }
     } do
-      devise_for :admins, controllers: { sessions: "admins/sessions" }, path: "admin_auth"
-
-      namespace :admin_panel do
-        root to: "dashboard#index"
-        resources :blog_posts, param: :slug do
-          member do
-            patch :toggle_publish
-            patch :toggle_hidden
-          end
-        end
-        resources :tags, only: [ :new, :create ]
-      end
+      admin_routes
     end
   end
 end
