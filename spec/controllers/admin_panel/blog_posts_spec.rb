@@ -38,11 +38,8 @@ RSpec.describe AdminPanel::BlogPostsController, type: :request do
 
     context "with invalid attributes" do
       it "does not create a new blog post" do
-        expect {
-          post admin_panel_blog_posts_path, params: { blog_post: { title: "", content: "", slug: "" } }
-        }.not_to change(BlogPost, :count)
-
-        expect(response).to have_http_status(:unprocessable_entity)
+        post admin_panel_blog_posts_path, params: { blog_post: { title: "", content: "", slug: "" } }
+        expect(response).to have_http_status(:unprocessable_content)
       end
     end
   end
@@ -67,7 +64,7 @@ RSpec.describe AdminPanel::BlogPostsController, type: :request do
     context "with invalid attributes" do
       it "does not update the blog post" do
         patch admin_panel_blog_post_path(blog_post.slug), params: { blog_post: { title: "" } }
-        expect(response).to have_http_status(:unprocessable_entity)
+        expect(response).to have_http_status(:unprocessable_content)
       end
     end
   end

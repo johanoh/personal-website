@@ -12,6 +12,6 @@ class Rack::Attack
       return [ 429, { "Content-Type" => "application/json" }, [ { error: "Too many requests. Please wait a moment." }.to_json ] ]
     end
 
-    [ 429, { "Content-Type" => "application/json" }, [ { error: "Too many requests. Please wait a moment." }.to_json ] ]
+    [ 429, { "Content-Type" => "text/html" }, [ "<h1>Too many requests. Please wait a moment.</h1>" ] ]
   end
 end
