@@ -32,7 +32,7 @@
       "cwe_id": [
         22
       ],
-      "note": ""
+      "note": "The `id` parameter is validated against a list of known projects in the `ProjectsController#show` action, so this is not a vulnerability."
     }
   ],
   "brakeman_version": "7.0.0"

@@ -22,14 +22,18 @@ class ContactController < ApplicationController
   private
 
   def send_email
-    name = params[:name]
-    email = params[:email]
-    message = params[:message]
+    name = contact_params[:name]
+    email = contact_params[:email]
+    message = contact_params[:message]
 
     ContactMailer.contact_email(name, email, message).deliver_now
     true
   rescue StandardError => e
     Rails.logger.error "Email failed: #{e.message}"
     false
+  end
+
+  def contact_params
+    params.permit(:name, :email, :message)
   end
 end

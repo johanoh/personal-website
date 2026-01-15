@@ -1,7 +1,4 @@
 Rails.application.routes.draw do
-  get "blog/index"
-  get "blog/show"
-  get "projects/index"
   root "home#index"
   get "/about", to: "about#index"
   get "/contact", to: "contact#index"
