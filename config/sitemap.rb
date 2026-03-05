@@ -1,5 +1,5 @@
 # Set the host name for URL creation
-SitemapGenerator::Sitemap.default_host = "http://me.johanoh.ca"
+SitemapGenerator::Sitemap.default_host = "https://me.johanoh.ca"
 
 SitemapGenerator::Sitemap.create do
   add root_path, changefreq: "daily", priority: 1.0
